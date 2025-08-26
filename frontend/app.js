@@ -1,7 +1,5 @@
 // === Ajuste a URL do backend aqui ===
-const BASE_URL = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
-  ? 'http://localhost:8000'
-  : 'http://localhost:8000'; // ajuste se hospedar em outro host
+const BASE_URL = ""
 
 const $ = (sel) => document.querySelector(sel);
 const log = (msg) => { const el = $('#log'); el.textContent = msg + '\n' + el.textContent; };

@@ -1,6 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import pathlib
 from typing import List
 import re, time, uuid, pathlib
 import numpy as np
@@ -20,6 +23,9 @@ app.add_middleware(
 
 DATA_DIR = pathlib.Path(__file__).parent / "data"
 DATA_DIR.mkdir(exist_ok=True)
+
+BACKEND_DIR = pathlib.Path(__file__).parent
+FRONTEND_DIR = BACKEND_DIR.parent / "frontend"
 
 _slug_re = re.compile(r"[^a-z0-9]+")
 
@@ -89,3 +95,4 @@ async def upload_pages(
         "saved_count": len(saved),
         "items": saved
     })
+app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
