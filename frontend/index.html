@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comics Scanner</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#111827">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>📚 Comics Scanner</h1>
+    <p>Capture e envie páginas de revistas em quadrinhos.</p>
+  </header>
+
+  <main>
+    <label>Nome da revista</label>
+    <input id="title" placeholder="ex.: Homem-Aranha #123" />
+
+    <div class="camera-controls">
+      <button id="openCam">Abrir câmera</button>
+      <input id="filePicker" type="file" accept="image/*" capture="environment" multiple style="display:none;">
+      <button id="pickFiles">Selecionar fotos</button>
+    </div>
+
+    <section id="cameraSection" class="hidden">
+      <video id="video" playsinline></video>
+      <div class="overlay"></div>
+      <button id="snap">Capturar página</button>
+      <button id="closeCam">Fechar câmera</button>
+      <canvas id="canvas" class="hidden"></canvas>
+    </section>
+
+    <section>
+      <h2>Páginas capturadas</h2>
+      <div id="thumbs"></div>
+    </section>
+
+    <div class="actions">
+      <button id="clear">Limpar</button>
+      <button id="send">Enviar páginas</button>
+    </div>
+
+    <pre id="log"></pre>
+  </main>
+
+  <footer>
+    <small>Front-end simples para testes locais. Ajuste a URL do back-end no início do <code>app.js</code>.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
